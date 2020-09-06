@@ -4,6 +4,9 @@ from selenium import webdriver
 browser = webdriver.Chrome()
 
 def create():
+
+    password = open("C:/Users/JaviP/Documents/Proyectos/MisProyectos/create-project/credentials.txt").read()
+
     project_name = str(sys.argv[1])
 
     browser.get("https://github.com/login")
@@ -12,7 +15,7 @@ def create():
     element.send_keys('ShinyPotat')
 
     element = browser.find_elements_by_id('password')[0]
-    element.send_keys('us43AF2P')
+    element.send_keys(password)
 
     element = browser.find_elements_by_xpath("//*[@id='login']/form/div[4]/input[9]")[0]
     element.click()
@@ -24,6 +27,8 @@ def create():
 
     element = browser.find_elements_by_xpath("//*[@id='new_repository']/div[4]/button")[0]
     element.submit()
+
+    browser.quit()
 
 if __name__ == "__main__":
     create()
