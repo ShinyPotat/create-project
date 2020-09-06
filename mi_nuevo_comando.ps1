@@ -6,7 +6,7 @@ function global:create($ProyectName)
     git init
     python C:\Users\JaviP\Documents\Proyectos\MisProyectos\create-project\create.py $ProyectName
     git remote add origin https://github.com/ShinyPotat/$ProyectName.git
-    echo $null >> README.md
+    Write-Output $null >> README.md
     git add .
     git commit -m "initial commit"
     git push -u origin master
