@@ -1,21 +1,23 @@
 import sys
+import os
 from selenium import webdriver
+
+username = os.environ.get('GITUSERNAME')
+pwd = os.environ.get('GITPASSWORD')
+
+project_name = str(sys.argv[1])
 
 browser = webdriver.Chrome()
 
 def create():
 
-    password = open("C:/Users/JaviP/Documents/Proyectos/MisProyectos/create-project/credentials.txt").read()
-
-    project_name = str(sys.argv[1])
-
     browser.get("https://github.com/login")
 
     element = browser.find_element_by_id('login_field')
-    element.send_keys('ShinyPotat')
+    element.send_keys(username)
 
     element = browser.find_elements_by_id('password')[0]
-    element.send_keys(password)
+    element.send_keys(pwd)
 
     element = browser.find_elements_by_xpath("//*[@id='login']/form/div[4]/input[9]")[0]
     element.click()

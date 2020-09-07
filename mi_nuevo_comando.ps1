@@ -1,10 +1,10 @@
 function global:create($ProyectName)
 {
-    Set-Location C:\Users\JaviP\Documents\Proyectos\MisProyectos
+    Set-Location $env:PROJECTSFOLDER
     mkdir $ProyectName
-    Set-Location C:\Users\JaviP\Documents\Proyectos\MisProyectos\$ProyectName
+    Set-Location $env:PROJECTSFOLDER\$ProyectName
     git init
-    python C:\Users\JaviP\Documents\Proyectos\MisProyectos\create-project\create.py $ProyectName
+    create.py $ProyectName
     git remote add origin https://github.com/ShinyPotat/$ProyectName.git
     Write-Output $null >> README.md
     git add .
